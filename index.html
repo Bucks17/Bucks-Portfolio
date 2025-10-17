@@ -175,22 +175,16 @@
 
         .screenshot {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             border: 1px solid #ddd;
             border-radius: 4px;
             margin-top: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .screenshot:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: block;
         }
 
         .screenshot-container {
-            position: relative;
-            display: inline-block;
+            text-align: center;
+            margin: 1.5rem 0;
         }
 
         .screenshot-caption {
@@ -228,9 +222,14 @@
             margin: 2rem 0;
         }
 
-        .video-placeholder {
+        .video-container {
             width: 100%;
             max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-placeholder {
+            width: 100%;
             height: 400px;
             background: #2c3e50;
             border-radius: 8px;
@@ -240,80 +239,11 @@
             justify-content: center;
             color: white;
             margin: 0 auto;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .video-placeholder:hover {
-            background: #34495e;
         }
 
         .video-placeholder i {
             font-size: 4rem;
             margin-bottom: 1rem;
-        }
-
-        .video-input {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .video-input input {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 300px;
-        }
-
-        .video-input button {
-            padding: 0.5rem 1rem;
-            background: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .video-input button:hover {
-            background: #2980b9;
-        }
-
-        /* Modal for screenshots */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            overflow: auto;
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            margin-top: 2%;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #bbb;
         }
 
         /* Summary Section */
@@ -393,16 +323,6 @@
             .video-placeholder {
                 height: 250px;
             }
-            
-            .video-input {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .video-input input {
-                width: 100%;
-                max-width: 300px;
-            }
         }
     </style>
 </head>
@@ -449,8 +369,8 @@
                     <p><strong>Substantiation:</strong> The provided screenshot shows a 100% score on the Business Communication module, completed in 7 minutes and 14 seconds. This demonstrates a full understanding of the core principles of effective business communication, including purpose, tone, and digital etiquette.</p>
                     <!-- Actual screenshot -->
                     <div class="screenshot-container">
-                        <img src="Screenshot 2025-10-17 221154.png" alt="Business Communication Completion" class="screenshot" onclick="openModal(this)">
-                        <div class="screenshot-caption">Click to enlarge</div>
+                        <img src="Screenshot 2025-10-17 221154.png" alt="Business Communication Completion" class="screenshot">
+                        <div class="screenshot-caption">Business Communication Module - 100% Score</div>
                     </div>
                 </div>
                 <div class="reflection">
@@ -490,8 +410,8 @@
                     <p><strong>Substantiation:</strong> The evidence shows a 100% score on the Interview Skills quiz, completed in 2 minutes and 51 seconds. This indicates a strong grasp of interview fundamentals, including the CAR method, company research, and answering common questions effectively.</p>
                     <!-- Actual screenshot -->
                     <div class="screenshot-container">
-                        <img src="Screenshot 2025-10-17 215706.png" alt="Interview Skills Completion" class="screenshot" onclick="openModal(this)">
-                        <div class="screenshot-caption">Click to enlarge</div>
+                        <img src="Screenshot 2025-10-17 215706.png" alt="Interview Skills Completion" class="screenshot">
+                        <div class="screenshot-caption">Interview Skills Module - 100% Score</div>
                     </div>
                 </div>
                 <div class="reflection">
@@ -531,8 +451,8 @@
                     <p><strong>Substantiation:</strong> This screenshot shows an 80% score on the Professional Networking module. While not perfect, a high score demonstrates a solid understanding of networking's purpose, event etiquette, and common mistakes to avoid.</p>
                     <!-- Actual screenshot -->
                     <div class="screenshot-container">
-                        <img src="Screenshot 2025-10-17 215742.png" alt="Professional Networking Completion" class="screenshot" onclick="openModal(this)">
-                        <div class="screenshot-caption">Click to enlarge</div>
+                        <img src="Screenshot 2025-10-17 215742.png" alt="Professional Networking Completion" class="screenshot">
+                        <div class="screenshot-caption">Professional Networking Module - 80% Score</div>
                     </div>
                 </div>
                 <div class="reflection">
@@ -572,8 +492,8 @@
                     <p><strong>Substantiation:</strong> The evidence confirms a 100% score on the Workplace Etiquette module, completed in 3 minutes and 23 seconds. This proves my knowledge of handling sensitive situations, meeting punctuality, confidentiality, and appropriate personal device use.</p>
                     <!-- Actual screenshot -->
                     <div class="screenshot-container">
-                        <img src="Screenshot 2025-10-17 215821.png" alt="Workplace Etiquette Completion" class="screenshot" onclick="openModal(this)">
-                        <div class="screenshot-caption">Click to enlarge</div>
+                        <img src="Screenshot 2025-10-17 215821.png" alt="Workplace Etiquette Completion" class="screenshot">
+                        <div class="screenshot-caption">Workplace Etiquette Module - 100% Score</div>
                     </div>
                 </div>
                 <div class="reflection">
@@ -606,18 +526,19 @@
             <div class="card">
                 <div class="video-section">
                     <h3>My Work Readiness Journey</h3>
-                    <p>Add a video link below to showcase your presentation or reflection on the work readiness training.</p>
+                    <p>Below is a video presentation showcasing my work readiness journey and reflections.</p>
                     
-                    <div id="videoContainer">
-                        <div class="video-placeholder" id="videoPlaceholder" onclick="promptForVideo()">
-                            <i class="fas fa-play-circle"></i>
-                            <p>Click to add your video presentation</p>
-                        </div>
-                    </div>
-                    
-                    <div class="video-input">
-                        <input type="text" id="videoUrl" placeholder="Paste YouTube or Vimeo link here">
-                        <button onclick="loadVideo()">Load Video</button>
+                    <div class="video-container">
+                        <!-- Replace the YouTube URL with your actual video -->
+                        <iframe 
+                            width="100%" 
+                            height="400" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        <div class="screenshot-caption">My Work Readiness Journey Video Presentation</div>
                     </div>
                 </div>
             </div>
@@ -643,12 +564,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Modal for enlarged screenshots -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
 
     <!-- Footer -->
     <footer>
@@ -679,79 +594,6 @@
                 });
             });
         });
-
-        // Modal functionality for screenshots
-        function openModal(img) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            modal.style.display = "block";
-            modalImg.src = img.src;
-        }
-
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-
-        // Video functionality
-        function promptForVideo() {
-            document.getElementById("videoUrl").focus();
-        }
-
-        function loadVideo() {
-            const videoUrl = document.getElementById("videoUrl").value;
-            const videoContainer = document.getElementById("videoContainer");
-            
-            if (!videoUrl) {
-                alert("Please enter a video URL");
-                return;
-            }
-            
-            let embedUrl = "";
-            
-            // Handle YouTube URLs
-            if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
-                let videoId = "";
-                
-                if (videoUrl.includes("youtube.com")) {
-                    videoId = videoUrl.split("v=")[1];
-                    const ampersandPosition = videoId.indexOf("&");
-                    if (ampersandPosition !== -1) {
-                        videoId = videoId.substring(0, ampersandPosition);
-                    }
-                } else if (videoUrl.includes("youtu.be")) {
-                    videoId = videoUrl.split("/").pop();
-                }
-                
-                embedUrl = `https://www.youtube.com/embed/${videoId}`;
-            } 
-            // Handle Vimeo URLs
-            else if (videoUrl.includes("vimeo.com")) {
-                const videoId = videoUrl.split("/").pop();
-                embedUrl = `https://player.vimeo.com/video/${videoId}`;
-            } else {
-                alert("Please enter a valid YouTube or Vimeo URL");
-                return;
-            }
-            
-            videoContainer.innerHTML = `
-                <iframe 
-                    width="100%" 
-                    height="400" 
-                    src="${embedUrl}" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `;
-        }
-
-        // Close modal when clicking outside the image
-        window.onclick = function(event) {
-            const modal = document.getElementById("imageModal");
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
     </script>
 </body>
 </html>
