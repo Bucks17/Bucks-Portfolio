@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philasande Gwala - Digital Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background-color: var(--light);
+            color: var(--secondary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .score {
+            background-color: var(--success);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .score-80 {
+            background-color: var(--warning);
+        }
+
+        .evidence {
+            margin-bottom: 1.5rem;
+        }
+
+        .screenshot {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .screenshot-caption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .star-technique {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .star-item {
+            margin-bottom: 1rem;
+        }
+
+        .star-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .star-label {
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Video Section */
+        .video-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background: #2c3e50;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .video-placeholder:hover {
+            background: #34495e;
+        }
+
+        .video-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-input {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .video-input input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 300px;
+        }
+
+        .video-input button {
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .video-input button:hover {
+            background: #2980b9;
+        }
+
+        /* Modal for screenshots */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 2%;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        /* Summary Section */
+        .summary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .summary-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .summary h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .summary p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .footer-links li {
+            margin: 0 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                padding: 0.8rem 1rem;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .score {
+                margin-top: 0.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .video-placeholder {
+                height: 250px;
+            }
+            
+            .video-input {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .video-input input {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <!-- Placeholder for profile image - replace with actual image if available -->
+            <div class="profile-img-placeholder" style="width:150px; height:150px; border-radius:50%; background:#fff; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; border:5px solid white;">
+                <i class="fas fa-user" style="font-size: 4rem; color: #3498db;"></i>
+            </div>
+            <h1>PHILASANDE GWALA</h1>
+            <p class="subtitle">Digital Portfolio - Work Readiness Training</p>
+            <p>This portfolio showcases my achievements and reflections from the Work Readiness Training program.</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#business-communication">Business Communication</a></li>
+                <li><a href="#interview-skills">Interview Skills</a></li>
+                <li><a href="#professional-networking">Professional Networking</a></li>
+                <li><a href="#workplace-etiquette">Workplace Etiquette</a></li>
+                <li><a href="#video-presentation">Video Presentation</a></li>
+                <li><a href="#summary">Summary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Business Communication Section -->
+        <section id="business-communication">
+            <h2 class="section-title">Business Communication</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Evidence of Completion</h3>
+                    <div class="score">100%</div>
+                </div>
+                <div class="evidence">
+                    <p><strong>Artifact:</strong> Screenshot of the module completion certificate</p>
+                    <p><strong>Substantiation:</strong> The provided screenshot shows a 100% score on the Business Communication module, completed in 7 minutes and 14 seconds. This demonstrates a full understanding of the core principles of effective business communication, including purpose, tone, and digital etiquette.</p>
+                    <!-- Actual screenshot -->
+                    <div class="screenshot-container">
+                        <img src="Screenshot 2025-10-17 221154.png" alt="Business Communication Completion" class="screenshot" onclick="openModal(this)">
+                        <div class="screenshot-caption">Click to enlarge</div>
+                    </div>
+                </div>
+                <div class="reflection">
+                    <h3>Reflection: STAR Technique</h3>
+                    <div class="star-technique">
+                        <div class="star-item">
+                            <span class="star-label">Situation:</span>
+                            <p>The task was to complete the Business Communication module, which covered topics like the purpose of communication, non-verbal cues, formal language, email tone, and video conferencing etiquette.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Task:</span>
+                            <p>My goal was to successfully complete all questions in the module to prove my understanding of how to communicate professionally and effectively in a business environment.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Action:</span>
+                            <p>I engaged with the learning material and applied critical thinking to each scenario-based question. For instance, I selected the correct answers regarding using a professional tone in emails and maintaining a non-distracting virtual background.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Result:</span>
+                            <p>I achieved a 100% score, confirming my understanding of the subject. This module has equipped me to write clear, professional emails and participate appropriately in virtual meetings, which is crucial for remote and hybrid work environments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interview Skills Section -->
+        <section id="interview-skills">
+            <h2 class="section-title">Interview Skills</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Evidence of Completion</h3>
+                    <div class="score">100%</div>
+                </div>
+                <div class="evidence">
+                    <p><strong>Artifact:</strong> Screenshot of the module completion certificate</p>
+                    <p><strong>Substantiation:</strong> The evidence shows a 100% score on the Interview Skills quiz, completed in 2 minutes and 51 seconds. This indicates a strong grasp of interview fundamentals, including the CAR method, company research, and answering common questions effectively.</p>
+                    <!-- Actual screenshot -->
+                    <div class="screenshot-container">
+                        <img src="Screenshot 2025-10-17 215706.png" alt="Interview Skills Completion" class="screenshot" onclick="openModal(this)">
+                        <div class="screenshot-caption">Click to enlarge</div>
+                    </div>
+                </div>
+                <div class="reflection">
+                    <h3>Reflection: STAR Technique</h3>
+                    <div class="star-technique">
+                        <div class="star-item">
+                            <span class="star-label">Situation:</span>
+                            <p>I undertook the Interview Skills module to learn how to present myself effectively in a job interview setting.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Task:</span>
+                            <p>The objective was to understand the purpose of an interview, learn structured methods for answering questions (like the CAR method), and discover the best practices for preparation and self-presentation.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Action:</span>
+                            <p>I studied the techniques presented, such as using the CAR (Context, Action, Result) method to structure behavioral answers. I also learned the importance of tailoring my "Tell me about yourself" answer to the role and being honest yet strategic when discussing weaknesses.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Result:</span>
+                            <p>The perfect score is evidence of my learning. I now feel confident in my ability to prepare for and navigate a professional job interview by providing structured, relevant, and compelling answers that highlight my skills and experiences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Networking Section -->
+        <section id="professional-networking">
+            <h2 class="section-title">Professional Networking</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Evidence of Completion</h3>
+                    <div class="score score-80">80%</div>
+                </div>
+                <div class="evidence">
+                    <p><strong>Artifact:</strong> Screenshot of the module completion certificate</p>
+                    <p><strong>Substantiation:</strong> This screenshot shows an 80% score on the Professional Networking module. While not perfect, a high score demonstrates a solid understanding of networking's purpose, event etiquette, and common mistakes to avoid.</p>
+                    <!-- Actual screenshot -->
+                    <div class="screenshot-container">
+                        <img src="Screenshot 2025-10-17 215742.png" alt="Professional Networking Completion" class="screenshot" onclick="openModal(this)">
+                        <div class="screenshot-caption">Click to enlarge</div>
+                    </div>
+                </div>
+                <div class="reflection">
+                    <h3>Reflection: STAR Technique</h3>
+                    <div class="star-technique">
+                        <div class="star-item">
+                            <span class="star-label">Situation:</span>
+                            <p>I completed the Professional Networking module to learn how to build and maintain valuable professional relationships.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Task:</span>
+                            <p>My aim was to understand the "golden rule" of networking, identify what a typical networking event entails, and learn the steps to create a robust professional network.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Action:</span>
+                            <p>I engaged with the content, correctly identifying the primary purpose of networking and common pitfalls. I applied logic to the questions, though I made one error in identifying the "golden rule," which provided a key learning moment about the importance of mutual benefit in networking.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Result:</span>
+                            <p>I scored 80%, which solidifies my understanding that networking is about building genuine, reciprocal relationships, not just collecting contacts. I have learned the initial steps to expand my professional circle strategically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workplace Etiquette Section -->
+        <section id="workplace-etiquette">
+            <h2 class="section-title">Workplace Etiquette</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Evidence of Completion</h3>
+                    <div class="score">100%</div>
+                </div>
+                <div class="evidence">
+                    <p><strong>Artifact:</strong> Screenshot of the module completion certificate</p>
+                    <p><strong>Substantiation:</strong> The evidence confirms a 100% score on the Workplace Etiquette module, completed in 3 minutes and 23 seconds. This proves my knowledge of handling sensitive situations, meeting punctuality, confidentiality, and appropriate personal device use.</p>
+                    <!-- Actual screenshot -->
+                    <div class="screenshot-container">
+                        <img src="Screenshot 2025-10-17 215821.png" alt="Workplace Etiquette Completion" class="screenshot" onclick="openModal(this)">
+                        <div class="screenshot-caption">Click to enlarge</div>
+                    </div>
+                </div>
+                <div class="reflection">
+                    <h3>Reflection: STAR Technique</h3>
+                    <div class="star-technique">
+                        <div class="star-item">
+                            <span class="star-label">Situation:</span>
+                            <p>The module focused on the unwritten rules of professional conduct in an office environment, covering scenarios from email communication to time management.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Task:</span>
+                            <p>I needed to learn the standards of professional behavior to ensure I can integrate smoothly into any workplace, respect colleagues, and protect company information.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Action:</span>
+                            <p>I absorbed the guidelines on responding professionally to a rude email (remaining calm and seeking clarification), the importance of arriving early for meetings, and the critical nature of safeguarding confidential data. I also learned the appropriate times for personal phone use.</p>
+                        </div>
+                        <div class="star-item">
+                            <span class="star-label">Result:</span>
+                            <p>Achieving a 100% score shows I can now navigate common workplace challenges with professionalism and discretion. This knowledge is fundamental to building trust and a positive reputation with future employers and colleagues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Presentation Section -->
+        <section id="video-presentation">
+            <h2 class="section-title">Video Presentation</h2>
+            <div class="card">
+                <div class="video-section">
+                    <h3>My Work Readiness Journey</h3>
+                    <p>Add a video link below to showcase your presentation or reflection on the work readiness training.</p>
+                    
+                    <div id="videoContainer">
+                        <div class="video-placeholder" id="videoPlaceholder" onclick="promptForVideo()">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Click to add your video presentation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-input">
+                        <input type="text" id="videoUrl" placeholder="Paste YouTube or Vimeo link here">
+                        <button onclick="loadVideo()">Load Video</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section id="summary" class="summary">
+            <div class="container">
+                <h2 class="section-title" style="color:white;">Connecting the Learning: A Polished Summary</h2>
+                <div class="summary-content">
+                    <p>This Work Readiness Training has provided me with a holistic and practical skill set essential for transitioning into the professional world. The interconnectedness of these modules is clear:</p>
+                    <br>
+                    <p><strong>Communication</strong> is the foundation for all professional interaction, whether in an <strong>interview</strong>, building a <strong>network</strong>, or day-to-day <strong>workplace</strong> collaboration.</p>
+                    <br>
+                    <p>The <strong>interview skills</strong> learned are a direct application of effective <strong>communication</strong> and are how you demonstrate your understanding of <strong>workplace etiquette</strong> to a potential employer.</p>
+                    <br>
+                    <p><strong>Professional networking</strong> relies entirely on strong <strong>communication</strong> and proper <strong>etiquette</strong> to build lasting relationships that can lead to <strong>interview</strong> opportunities.</p>
+                    <br>
+                    <p><strong>Workplace etiquette</strong> is the practical application of all these skills in a live environment, ensuring sustainable career growth.</p>
+                    <br>
+                    <p>This portfolio is a testament to my proactivity in preparing for my career. I have not only consumed this information but have also critically reflected on how each element contributes to my identity as a prepared, professional, and capable future employee.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for enlarged screenshots -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Digital Portfolio - Work Readiness Training</p>
+            <p>Philasande Gwala</p>
+            <ul class="footer-links">
+                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fab fa-github"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+            </ul>
+            <p>&copy; 2025 - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Modal functionality for screenshots
+        function openModal(img) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        // Video functionality
+        function promptForVideo() {
+            document.getElementById("videoUrl").focus();
+        }
+
+        function loadVideo() {
+            const videoUrl = document.getElementById("videoUrl").value;
+            const videoContainer = document.getElementById("videoContainer");
+            
+            if (!videoUrl) {
+                alert("Please enter a video URL");
+                return;
+            }
+            
+            let embedUrl = "";
+            
+            // Handle YouTube URLs
+            if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
+                let videoId = "";
+                
+                if (videoUrl.includes("youtube.com")) {
+                    videoId = videoUrl.split("v=")[1];
+                    const ampersandPosition = videoId.indexOf("&");
+                    if (ampersandPosition !== -1) {
+                        videoId = videoId.substring(0, ampersandPosition);
+                    }
+                } else if (videoUrl.includes("youtu.be")) {
+                    videoId = videoUrl.split("/").pop();
+                }
+                
+                embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            } 
+            // Handle Vimeo URLs
+            else if (videoUrl.includes("vimeo.com")) {
+                const videoId = videoUrl.split("/").pop();
+                embedUrl = `https://player.vimeo.com/video/${videoId}`;
+            } else {
+                alert("Please enter a valid YouTube or Vimeo URL");
+                return;
+            }
+            
+            videoContainer.innerHTML = `
+                <iframe 
+                    width="100%" 
+                    height="400" 
+                    src="${embedUrl}" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
